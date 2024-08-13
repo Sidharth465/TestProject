@@ -30,7 +30,7 @@ const UserIcon = ({ isFocused }:any) => {
 export default function MainLayout() {
   return (
     <Tabs 
-     initialRouteName="(tabs)/(product)/index"
+     initialRouteName="(product)/index"
 
     screenOptions={{
       

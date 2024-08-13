@@ -14,6 +14,7 @@ import Animated, {
 import { Theme } from "../theme/theme";
 import Text from "./SVText";
 import BWView from "./SView";
+import React from "react";
 
 type BWButtonType = {
   surface?: keyof Theme["colors"];
@@ -45,8 +46,8 @@ type ResponsiveTextVariant = {
   largeTablet?: keyof Theme["textVariants"];
 };
 const SVButton = ({
-  textColor="text_on_secondary",
-  surface = "secondary",
+  textColor="background",
+  surface = "errorRed",
   title = "",
   height = 31,
   testId = "",
@@ -62,7 +63,7 @@ const SVButton = ({
   processing = false,
   borderWidth = 0,
   textVariant = "gilroy-bold",
-  borderColor = "secondary",
+
   fontSize,
   shadow
 }: BWButtonType) => {
@@ -106,7 +107,7 @@ const SVButton = ({
     >
       <Animated.View style={buttonStyle}>
         <BWView
-          backgroundColor={disabled ? "list_background" : surface}
+          backgroundColor={ surface}
           height={height}
           borderRadius={"ss"}
           justifyContent={"center"}
@@ -116,11 +117,10 @@ const SVButton = ({
           paddingHorizontal={paddingHorizontal}
           marginLeft={marginLeft}
           paddingTop={paddingTop}
-          shadowColor={"ailment_background"}
+          shadowColor={"text_with_opacity"}
           width={width}
           shadowOpacity={1}
           borderWidth={borderWidth}
-          borderColor={borderColor}
           elevation={shadow ?  5:0}
           
         >

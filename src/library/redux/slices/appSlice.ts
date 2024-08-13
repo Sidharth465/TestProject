@@ -1,46 +1,47 @@
-import {PayloadAction,createSlice} from "@reduxjs/toolkit"
-interface RoleBaseLogin{
-    mobile_number:string,
-    role:string,
-    otp:string,
-    
+import { createSlice } from '@reduxjs/toolkit';
 
+
+interface state{
+items:[]
 }
-interface State{
-    roleBaseLogin: RoleBaseLogin;
-    selectedCity: string;
-    selectedArea: string;
-    otpVisible: boolean;
+const initialState:state = {
+  items: [],
+};
 
-}
-
-const initialState:State = {
-    roleBaseLogin:{mobile_number:"8744098062",role:"admin",otp:"",},
-    selectedCity:"",
-    selectedArea:"",
-    otpVisible:false
-}
-
-export const appSlice = createSlice({
-    name:"appSLice",
-    initialState,
-      reducers:{
-        updateLoginCredentials:(state,action)=>{   
-            state.roleBaseLogin = action.payload
-            },
-            updateCity:(state,action)=>{
-                state.selectedCity = action.payload
-                },
-            updateArea:(state,action)=>{
-                state.selectedArea = action.payload
-                },
-                setOtpVisible:(state,action)=>{
-                    state.otpVisible = action.payload
-
-                }
+const cartSlice = createSlice({
+  name: 'cart',
+  initialState,
+  reducers: {
+    addToCart(state, action) {
+      const item = action.payload;
+      const existingItem = state.items.find((i) => i.id === item.id);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        state.items.push({ ...item, quantity: 1 });
       }
-
+    },
+    removeFromCart(state, action) {
+      const itemId = action.payload;
+      state.items = state.items.filter((item) => item.id !== itemId);
+    },
+    incrementQuantity(state, action) {
+      const itemId = action.payload;
+      const existingItem = state.items.find((i) => i.id === itemId);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      }
+    },
+    decrementQuantity(state, action) {
+      const itemId = action.payload;
+      const existingItem = state.items.find((i) => i.id === itemId);
+      if (existingItem && existingItem.quantity > 1) {
+        existingItem.quantity -= 1;
+      }
+    },
+  },
 });
 
-export const {updateLoginCredentials,updateCity,setOtpVisible} = appSlice?.actions;
-export default  appSlice.reducer
+export const { addToCart, removeFromCart, incrementQuantity, decrementQuantity } = cartSlice.actions;
+
+export default cartSlice.reducer;

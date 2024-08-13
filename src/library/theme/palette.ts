@@ -9,7 +9,8 @@ export default {
     header_shadow: "#00000029",
     text_blue: "#008dff",
     text_with_opacity: "#29333BCC",
-    header_color:"#00ced1"
+    header_color:"#00ced1",
+    opacive_grey:"#ECECEC"
 
      
 
