@@ -10,7 +10,8 @@ export default {
     text_blue: "#008dff",
     text_with_opacity: "#29333BCC",
     header_color:"#00ced1",
-    opacive_grey:"#ECECEC"
+    opacive_grey:"#ECECEC",
+    android_green:"#17B169"
 
      
 

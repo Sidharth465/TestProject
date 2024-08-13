@@ -26,7 +26,8 @@ const theme = createTheme({
     text_with_opacity: palette.text_with_opacity,
 
     errorRed: "#FF0000",
-    opacive_grey:palette?.opacive_grey
+    opacive_grey:palette?.opacive_grey,
+    light_green:palette?.android_green
   },
 
   spacing: {

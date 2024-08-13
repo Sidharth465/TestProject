@@ -1,19 +1,18 @@
+import { fetchSingleProducts } from "@/src/utils/service";
 import React, { useEffect, useState } from "react";
 import {
+  ActivityIndicator,
+  Image,
   KeyboardAvoidingView,
   Modal,
   Pressable,
-  Image,
-  ActivityIndicator,
   ToastAndroid,
 } from "react-native";
-import SWView from "../components/SView";
-import { fetchSingleProducts } from "@/src/utils/service";
-import Text from "../components/SVText";
 import SVButton from "../components/SVButton";
+import SWView from "../components/SView";
+import Text from "../components/SVText";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { addToCart } from "../redux/slices/appSlice";
-import index from "@/src/app";
 import theme from "../theme/theme";
 
 type Props = {
@@ -91,6 +90,7 @@ const ProductModal = ({ onClose, visible }: Props) => {
           <SWView
             backgroundColor="background"
             height={"60%"}
+            maxHeight={"80%"}
             width={"85%"}
             borderRadius="m"
             flexDirection="column"
@@ -111,8 +111,25 @@ const ProductModal = ({ onClose, visible }: Props) => {
                     resizeMode="contain"
                     height={150}
                     width={200}
+                    
                     source={{ uri: product?.image }}
                   />
+                </SWView>
+                <SWView
+                  flexDirection="row"
+                  justifyContent="space-between"
+                  marginTop="m"
+                  gap="s"
+                >
+                                    <SWView flex={1}>
+                    <Text fontSize={15} fontFamily="gilroy-bold">
+                      {product?.title}
+                    </Text>
+                  </SWView>
+                  <Text color="light_green" fontSize={20} fontFamily="gilroy-bold">
+                  ₹{""}{product?.price}
+                  </Text>
+
                 </SWView>
 
                 <SWView
@@ -126,8 +143,8 @@ const ProductModal = ({ onClose, visible }: Props) => {
                     Description:{" "}
                   </Text>
                   <SWView flex={1}>
-                    <Text fontSize={17} fontFamily="gilroy-medium">
-                      {product?.description}
+                    <Text fontSize={16} fontFamily="gilroy-medium">
+                      {product?.description?.slice(0,273)}
                     </Text>
                   </SWView>
                 </SWView>
