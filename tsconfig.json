@@ -1,10 +1,20 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "jsx": "react",
     "strict": true,
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@theme": [
+        "src/library/theme/theme.ts"
+      ],
+      "@palette": [
+        "src/library/theme/palette.ts"
+      ],
+      "@assets/*": [
+        "assets/*"
       ]
     }
   },
